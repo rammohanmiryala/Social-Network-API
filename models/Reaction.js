@@ -13,7 +13,7 @@ const reactionSchema = new Schema(
       maxlength: 280,
       minlength: 10,
     },
-    username: {
+    userName: {
       type: String,
       required: true,
     },
@@ -33,4 +33,4 @@ const reactionSchema = new Schema(
   }
 );
 
-module.exports = reactionSchema;
+

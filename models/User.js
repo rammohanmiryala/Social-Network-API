@@ -3,55 +3,48 @@ const {
   model
 } = require('mongoose');
 
-// var validateEmail = function (email) {
-//   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//   return re.test(email)
-// };
+var validateEmail = function (email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email)
+};
 
 // Schema to create Student model
 
-const userSchema = new Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      max_length: 50,
-    },
-    email: {
-      type: String,
-      trim: true,
-      lowercase: true,
-      unique: true,
-      required: 'Email address is required',
-      match: [
-        /^([a-z0-9_\.-]+)@([a-z0-9]+)\.([a-z]{2,6})$/,
-        "Please enter a valid email.",
-      ],
-    },
-    thoughts: [
-      {
-      type: Schema.Types.ObjectId,
-      ref: 'Thought',
-      } 
-    ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      }
-
-    ],
+const userSchema = new Schema({
+  userName: {
+    type: String,
+    required: true,
+    trim: true,
+    max_length: 50,
   },
-  {
+  email: {
+    type: String,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    required: 'Email address is required',
+    validate: [validateEmail, "Please fill a valid email address"],
+  },
+  thoughts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Thought',
+  }],
+  friends: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }],
+}, {
   toJSON: {
-    getters: true,
+    virtuals: true,
   },
   id: false,
-  }
-);
+});
 
+
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+
+});
 
 const User = model('User', userSchema);
 
