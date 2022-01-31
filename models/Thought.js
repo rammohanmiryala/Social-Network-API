@@ -1,4 +1,7 @@
-const {  Schema,  model} = require('mongoose');
+const {
+  Schema,
+  model
+} = require('mongoose');
 const reactionSchema = require('./Reaction');
 const moment = require("moment");
 
@@ -13,13 +16,12 @@ const thoughtSchema = new Schema({
     type: Date,
     default: Date.now(),
     get: (formatDate) =>
-    moment(formatDate).format("dddd, MMMM Do YYYY hh:mm a"),
+      moment(formatDate).format("dddd, MMMM Do YYYY hh:mm a"),
     default: true,
   },
   userName: {
     type: String,
     required: true,
-    ref: "User",
   },
   reactions: [reactionSchema]
 
