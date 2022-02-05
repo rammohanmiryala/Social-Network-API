@@ -29,7 +29,7 @@ This project is to build a social network API where users can share their though
 - node server.js
 
 ## Demo
-![techpost](/Tech_Blog\public\assets/img.gif)
+![socialapi](/Social-Network-API/assets/img.gif)
 
 ## License 
 
@@ -39,7 +39,7 @@ This project is to build a social network API where users can share their though
 ---
 - github: https://github.com/rammohanmiryala/Social-Network-API.git
 
-- Walkthrough Video
+- Walkthrough Video : https://youtu.be/g5E5MuEFfJc
     
 
 

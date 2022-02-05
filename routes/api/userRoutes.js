@@ -20,7 +20,6 @@ router.route('/:userId').get(getSingleUser).delete(deleteUserById).put(updateUse
 router.route('/:userId/friend/:friendId').post(addFriend).delete(deleteFriend)
 
 
-
 // // /api/students/:studentId/assignments
 // router.route('/:studentId/assignments').post(addAssignment);
 
