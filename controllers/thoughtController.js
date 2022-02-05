@@ -21,7 +21,7 @@ module.exports = {
       .then((thought) =>
         !thought ?
           res.status(404).json({
-            message: "No user with this ID"
+            message: "No Thought with this ID"
           }) :
           res.json(thought)
       )
@@ -33,7 +33,7 @@ module.exports = {
       .then((thought) =>
         !thought
 
-          ? res.status(404).json({ message: 'No course with that ID' })
+          ? res.status(404).json({ message: 'No Thought with that ID' })
           : User.findByIdAndUpdate(
 
             { _id: req.body.userId },
@@ -45,7 +45,7 @@ module.exports = {
               !thought
                 ? res
                   .status(404)
-                  .json({ message: 'No student found with that ID :(' })
+                  .json({ message: 'No Thought found with that ID :(' })
                 : res.json(thought)
             )
 
@@ -89,7 +89,7 @@ module.exports = {
     Thought.findByIdAndUpdate(
       { _id: req.params.thoughtId },
       { $push: { reactions: req.body } },
-      { new: true }
+      { runValidators: true,new: true }
     )
       .then((thought) =>
         !thought
@@ -106,7 +106,7 @@ module.exports = {
     Thought.findByIdAndUpdate(
       { _id: req.params.thoughtId },
       { $pull: { reactions: req.params.reactionId } },
-      { new: true }
+      {runValidators: true, new: true }
     )
       .then((thought) =>
         !thought

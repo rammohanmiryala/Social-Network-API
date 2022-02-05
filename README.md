@@ -39,8 +39,6 @@ This project is to build a social network API where users can share their though
 ---
 - github: https://github.com/rammohanmiryala/Social-Network-API.git
 
-- heroku : 
-
 - Walkthrough Video
     
 
